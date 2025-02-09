@@ -51,7 +51,7 @@ CREATE TABLE `d_film` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-CREATE TABLE `film_actor` (
+CREATE TABLE `d_film_actor` (
   `actor_id` smallint unsigned NOT NULL,
   `film_id` smallint unsigned NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
