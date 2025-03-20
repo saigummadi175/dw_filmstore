@@ -84,6 +84,10 @@ CREATE TABLE stage_sakila.int_film_category (
   `last_update` timestamp
 ) ;
 
+CREATE TABLE stage_sakila.int_film_text (
+  `film_id` smallint NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text);
 
 CREATE TABLE stage_sakila.int_inventory (
   `inventory_id` mediumint ,
