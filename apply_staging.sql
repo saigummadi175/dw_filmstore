@@ -42,7 +42,7 @@ where not exists (select 1
                    where ia.address_id=sa.address_id);
 
 
-delete from stg_sakila.int_actor;
+delete from stg_sakila.int_address;
 
 commit;
 
@@ -65,7 +65,7 @@ where not exists (select 1
                    where ic.category_id=sc.category_id);
 
 
-delete from stg_sakila.int_actor;
+delete from stg_sakila.int_category;
 
 commit;
 
