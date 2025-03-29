@@ -26,8 +26,18 @@ CREATE TABLE `d_film` (
   `title` varchar(128) NOT NULL,
   `description` text,
   `release_year` year DEFAULT NULL,
-  `language_id` tinyint unsigned NOT NULL
+  `category` varchar(25),
+  `language` char(20),
+  `original_language` char(20),
+  `rental_duration` tinyint unsigned NOT NULL DEFAULT '3',
+  `rental_rate` decimal(4,2) NOT NULL DEFAULT '4.99',
+  `length` smallint unsigned DEFAULT NULL,
+  `replacement_cost` decimal(5,2) NOT NULL DEFAULT '19.99',
+  `rating` enum('G','PG','PG-13','R','NC-17') DEFAULT 'G',
+  `special_features` set('Trailers','Commentaries','Deleted Scenes','Behind the Scenes') DEFAULT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
 
 CREATE TABLE `d_filmactor` (
   `actor_id` smallint unsigned NOT NULL,
