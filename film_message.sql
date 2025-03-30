@@ -18,11 +18,11 @@ on sfc.film_id = sf.film_id;
 
 UPDATE dw_filmstore.d_film df
 join stg_sakila.film_message fm on df.film_id = fm.film_id
-left join stg_sakila.int_film fi on fm.film_id = fi.film_id
-left join stg_sakila.int_film_category ifm on fi.film_id = ifm.film_id
-left join stg_sakila.int_category ic on ic.category_id = ifm.category_id
-left join stg_sakila.int_language il on fi.film_id = il.film_id
-left join stg_sakila.int_language il1 on fi.original_film_id = il1.original_film_id
+left join stg_sakila.stg_film fi on fm.film_id = fi.film_id
+left join stg_sakila.stg_film_category ifm on fi.film_id = ifm.film_id
+left join stg_sakila.stg_category ic on ic.category_id = ifm.category_id
+left join stg_sakila.stg_language il on fi.language_id = il.language_id
+left join stg_sakila.stg_language il1 on fi.original_language_id = il1.language_id
 SET 
 	df.title = coalesce(fi.title, df.title),
     df.description = coalesce(fi.description, df.description),
