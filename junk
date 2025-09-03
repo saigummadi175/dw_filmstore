@@ -1,0 +1,26 @@
+insert into dw_filmstore.d_customer
+	(customer_id, first_name, last_name, email, address, address2, 
+		city, district, country, location, phone, postal_code, create_date)
+select sc.customer_id, sc.first_name, sc.last_name, sc.email, sa.address, sa.address2, 
+		city, sa.district, country, sa.location, sa.phone, sa.postal_code, create_date 
+from stage_sakila.stg_customer sc
+left join stage_sakila.stg_address sa on sc.address_id = sa.address_id
+left join stage_sakila.stg_city sct on sa.city_id = sct.city_id
+left join stage_sakila.stg_country scty on sct.country_id = scty.country_id
+where not exists (select customer_id
+                   from dw_filmstore.d_customer dc
+                   where sc.customer_id=dc.customer_id)
+                   ;
+ 
+ 
+ 
+ insert into dw_filmstore.d_customer
+select c.customer_id, c.first_name, c.last_name, c.email, 
+a.address, a.address2, ct.city, a.district, ctry.country, a.location, a.phone, a.postal_code, c.create_date
+from stage_sakila.stg_customer c
+LEFT JOIN stage_sakila.stg_address a on c.address_id = a.address_id
+LEFT JOIN stage_sakila.stg_city ct on a.city_id = ct.city_id
+LEFT JOIN stage_sakila.stg_country ctry on ct.country_id = ctry.country_id
+where not exists (select customer_id
+                   from dw_filmstore.d_customer dc
+                   where c.customer_id=dc.customer_id)
